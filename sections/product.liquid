@@ -44,9 +44,28 @@
     {% else %}
       red-button
     {% endif %}" type="submit" value="Add to cart">
+    <p class="stock-info">
+    {% if current_variant.inventory_quantity > 5 %}
+    Available!
+    {% else %}
+    Low stock
+    {% endif %}
+    </p>
     {{ form | payment_button }}
     <script>
-      window.product = {{ product | json }};
+      window.product = {
+        variants: [
+          {% for variant in product.variants %}
+            {
+              id: {{ variant.id }},
+              available: {{ variant.available | json }},
+              inventory_quantity: {{ variant.inventory_quantity | default: 0 }},
+              title: {{ variant.title | json }},
+              price: {{ variant.price | json }}
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      };
     </script>
     {% endform %}
     
