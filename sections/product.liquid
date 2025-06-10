@@ -51,7 +51,7 @@
     {% endif %}
     </p>
     {{ form | payment_button }}
-    <p class="size-description">それはSサイズです。</p>
+    <p class="size-description">{{ current_variant.metafields.custom.size.value }}</p>
     {% endform %}
     <script>
       window.product = {
@@ -62,7 +62,12 @@
               available: {{ variant.available | json }},
               inventory_quantity: {{ variant.inventory_quantity | default: 0 }},
               title: {{ variant.title | json }},
-              price: {{ variant.price | json }}
+              price: {{ variant.price | json }},
+              metafields: {
+                custom: {
+                  size: {{ variant.metafields.custom.size | json }}
+                }
+              }
             }{% unless forloop.last %},{% endunless %}
           {% endfor %}
         ]
