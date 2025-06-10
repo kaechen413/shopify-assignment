@@ -115,3 +115,57 @@ body {
 .shopify-section > .full-width {
   grid-column: 1 / -1;
 }
+.product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 2rem;
+  align-items: start;
+}
+.product-images {
+  grid-column: 1;
+  width: 100%;
+}
+
+.product-images .product-image {
+  margin: auto;
+}
+
+.product-body {
+  grid-column: 2;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-form form{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.green-button {
+  background-color: green;
+  color: white;
+  padding: 1em 2em;
+  height: 44px;
+  border: none;
+  border-radius: 0px;
+}
+
+.red-button {
+  background-color: rgb(216, 70, 70);
+  color: white;
+  padding: 1em 2em;
+  height: 44px;
+  border: none;
+  border-radius: 0px;
+}
+
+.green-button:hover {
+  background-color: #42bcd4;
+  transition: background-color 0.2s ease;
+}

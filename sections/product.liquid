@@ -4,13 +4,13 @@
 
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
-
+<div class="product-container">
 <div class="product-images">
   {% for image in product.images %}
     {% render 'image', class: 'product-image', image: image %}
   {% endfor %}
 </div>
-
+<div class="product-body">
 <div class="product-info">
   <h1>{{ product.title }}</h1>
   <p>{{ product.price | money }}</p>
@@ -31,14 +31,27 @@
         >
           {{ variant.title }} - {{ variant.price | money }}
         </option>
+        
       {% endfor %}
     </select>
+    <input type="hidden" id="selected-variant">
+    <p class="size-description">それはSサイズです。</p>
 
     <input type="text" name="quantity" min="1" value="1">
-
-    <input type="submit" value="Add to cart">
+    
+    <input class="add-to-cart {% if current_variant.available %}
+      green-button
+    {% else %}
+      red-button
+    {% endif %}" type="submit" value="Add to cart">
     {{ form | payment_button }}
-  {% endform %}
+    <script>
+      window.product = {{ product | json }};
+    </script>
+    {% endform %}
+    
+  </div>
+  </div>
 </div>
 
 {% schema %}
