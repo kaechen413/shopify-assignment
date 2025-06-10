@@ -20,7 +20,7 @@
 
     {% sections 'footer-group' %}
     {% if template.name == 'product' %}
-    <script src="{{ 'product.js' | asset_url }}"></script>
+    <script src="{{ 'product.js' | asset_url }}" defer></script>
     {% endif %}
   </body>
 </html>
