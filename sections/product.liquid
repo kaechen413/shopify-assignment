@@ -61,8 +61,6 @@
               id: {{ variant.id }},
               available: {{ variant.available | json }},
               inventory_quantity: {{ variant.inventory_quantity | default: 0 }},
-              title: {{ variant.title | json }},
-              price: {{ variant.price | json }},
               metafields: {
                 custom: {
                   size: {{ variant.metafields.custom.size | json }}
