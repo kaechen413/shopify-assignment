@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedId = sizeSelect.value;
         const variant = window.product.variants.find( variant => variant.id === parseInt(selectedId));
         if (variant) {
-            document.querySelector(".size-description").innerText = `それは${variant.title}サイズです。`;
+            document.querySelector(".size-description").innerText = `${variant.metafields.custom.size}`;
             if (variant.available) {
                     addToCartBtn.classList.remove('red-button');
                     addToCartBtn.disabled = false;
